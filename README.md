@@ -188,7 +188,7 @@ go
 ```
 
 ## Transakce
-- Databáze
+- DOPLŇIT !!!!!!!!!!!!!!!!!!!!!!!!!
 
 ## Přístupové údaje do databáze
 př:
@@ -206,6 +206,27 @@ Poté do této databáze nahrát soubor, který se nachází v /sql/structure.sq
 Pokud si přejete načíst do databáze testovací data, je nutno nahrát ještě soubor /sql/data.sql ...
 
 ## Zálohování
+
+K celkovému vytvoření databáze a manipulace s ní používám Microsoft SQL Server, který provozuje SPŠE Ječná, a proto nemohu provést zálohu své databáze. Níže alespoň popíši, jak postupovat při zálohování.    
+
+Zálohování je klíčovou částí správy databáze, která zajišťuje bezpečnost dat a obnovitelnost systému v případě havárie nebo nežádoucí události. Rozlišujeme tři typy:    
+- Plná záloha (Full Backup): Zahrnuje kompletní zálohu všech dat v databázi.
+```
+BACKUP DATABASE [YourDatabaseName]
+TO DISK = 'C:\Path\To\Your\Backup.bak'
+WITH INIT;
+```
+  
+- Diferenciální záloha (Differential Backup): Zahrnuje pouze změny od poslední plné zálohy.
+```
+BACKUP DATABASE [YourDatabaseName] 
+TO DISK = 'C:\Path\To\Your\Backup_Differential.bak' 
+WITH DIFFERENTIAL, INIT;
+```
+
+- Transakční záloha (Transaction Log Backup): Zahrnuje transakce od poslední plné nebo diferenciální zálohy. 
+
+
 
 
 ## Klientská aplikace
