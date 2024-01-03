@@ -98,8 +98,15 @@ objednavka
 
 
 ## Indexy 
-- Databáze má pro každou entitu pouze indexy vytvořené pro primární klíče, 
-další indexy ...
+- Databáze má pro každou entitu indexy vytvořené pro primární klíče, další jsou uvedeny níže:
+```
+/* -- INDEX -- */
+/*Index pro sloupec nazev v tabulce mobil*/
+create index idx_nazev on mobil(nazev);
+
+/*Index pro sloupec nazev v tabulce tarif*/
+create index idx_nazev_tarif on tarif(nazev);
+```
 
 ## Pohledy
 - Návrh obsahuje hned několik pohledů základních pohledů, které vypíšou data z jednotlivých tabulek. Dále návrh obsahuje pohledy, které využívají agregační funkce:
@@ -129,7 +136,22 @@ go
 - Databáze obsahuje triggery ...
 
 ## Uložené procedury a funkce
-- Databáze obsahuje procedury  ... a funkce ...
+- Databáze obsahuje:
+  - vypis_by_cislo_obj - proceduru pro výpis objednávky na základě čísla dané objednávky, která má jako vstupní parametr číslo objednávky
+  - vypis_by_name - proceduru pro výpis zákazníka na základě jeho jména a příjmení (vstupní parametry jsou jméno a příjmení)
+  - vypis_by_rodne_cislo - proceduru pro výpis zákazníka na základě rodného čísla, protože je unikátní a omezím tak výpis lidí se stejnými jmény (vstupní parametr je rodné číslo)
+  - update_adresa - proceduru pro změnu bydliště zákazníka na základě jeho rodného čísla (vstupní parametry jsou rodné číslo, nová ulice, číslo_popisné
+  - update_kontaktni_udaje - proceduru, ve které zákazník může upravit své kontaktní údaje na základě rodného čísla(vstupní parametry jsou rodné číslo, nový email a nový telefon)
+
+```
+go
+create procedure vypis_by_cislo_obj @cislo_obj int
+as
+select objednavka.cislo_obj as cislo_obj, zakaznik.jmeno as jmeno, zakaznik.prijmeni as prijmeni, mobil.nazev as mobil, tarif.nazev as nazev, tarif.mnozstvi_dat as mnozstvi_dat, platba.typ_platby as typ_platby, zamestnanec.prijmeni as zamestnanec, objednavka.celkova_cena
+from objednavka inner join zakaznik on objednavka.zakaznik_id = zakaznik.id inner join mobil on objednavka.mobil_id = mobil.id inner join tarif on mobil.tarif_id = tarif.id inner join platba on objednavka.platba_id = platba.id inner join zamestnanec on objednavka.zamestanec_id = zamestnanec.id
+where objednavka.cislo_obj = @cislo_obj;
+go
+```
 
 ## Transakce
 - Databáze
