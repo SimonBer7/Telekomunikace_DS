@@ -133,7 +133,41 @@ go
  
 
 ## Triggery
-- Databáze obsahuje triggery ...
+- Databáze obsahuje triggery, které se provedou vždy po přidání nové objednávky:
+- set_poplatek - jedná se o trigger (after insert), který přičte poplatek za typ platby k celkové ceně objednávky
+- set_datum - jedná se o trigger (after insert), který pro nastavení datumu po vytvoření objednávky
+- set_sleva - jedná se o trigger (after insert), který odečítá slevu na mobil z vybraného tarifu při vytvoření objednávky
+```
+go
+create trigger set_sleva
+on objednavka
+after insert
+as
+begin
+
+declare @obj_id int;
+declare @mobil_id int;
+declare @tarif_sleva int;
+declare @cena_mobilu int;
+
+select @obj_id = id,
+@mobil_id = mobil_id
+from inserted;
+
+select @tarif_sleva = t.sleva_na_mobil,
+@cena_mobilu = m.cena_ks
+from mobil m
+join tarif t on m.tarif_id = t.id
+where m.id = @mobil_id;
+
+update objednavka
+set celkova_cena = celkova_cena - @tarif_sleva
+where id = @obj_id;
+
+end 
+go
+```
+
 
 ## Uložené procedury a funkce
 - Databáze obsahuje:
