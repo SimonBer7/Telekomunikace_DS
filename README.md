@@ -17,11 +17,14 @@ využil Oracle DataModeler, v němž jsem vytvořil logické a relační schéma
 Konceptuální (logický) model databáze se nachází v /img/Logical.png    
 Relační model databáze se také nachází v /img/Relational.png
 
-## Logický model
-![Logical]
+### Logický model
+![Logical](https://raw.githubusercontent.com/SimonBer7/Telekomunikace_DS/main/img/Logical.png)
+
+### Relační model
+![Relational](https://raw.githubusercontent.com/SimonBer7/Telekomunikace_DS/main/img/Relational.png)
 
 ## Entitní integrita
-př:
+
 Každá entita obsahuje uměle vytvořený primární klíč, označený jako `id`, 
 který se s každým dalším záznamem inkrementuje...
 
