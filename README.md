@@ -1,4 +1,4 @@
-# Objednání mobilu s tarifem od společnosti T-Mobile
+# Praktická maturitní zkouška
 
 **Střední průmyslová škola elektrotechnická, Praha 2, Ječná 30**
 **Školní rok 2023/2024**
@@ -9,7 +9,7 @@
 
 ## Úvod
 
-Problém jsem se rozhodl řešit v MSSQL Server, jako návrhové prostředí jsem 
+Problém v oblasti telekomunikace jsem se rozhodl řešit v MSSQL Server, jako návrhové prostředí jsem 
 využil Oracle DataModeler, v němž jsem vytvořil logické a relační schéma.
 
 ## E-R model
