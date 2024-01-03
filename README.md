@@ -131,6 +131,9 @@ go
 ## Uložené procedury a funkce
 - Databáze obsahuje procedury  ... a funkce ...
 
+## Transakce
+- Databáze
+
 ## Přístupové údaje do databáze
 př:
 - Přístupové údaje jsou volně konfigurovatelné v souboru /config/... .doc
@@ -145,6 +148,9 @@ př:
 Nejprve je nutno si vytvořit novou databázi, čistou, bez jakýchkoliv dat...
 Poté do této databáze nahrát soubor, který se nachází v /sql/structure.sql ...
 Pokud si přejete načíst do databáze testovací data, je nutno nahrát ještě soubor /sql/data.sql ...
+
+## Zálohování
+
 
 ## Klientská aplikace
 - Databáze neobsahuje klientskou aplikaci.
