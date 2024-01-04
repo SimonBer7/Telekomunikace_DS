@@ -353,7 +353,7 @@ GRANT SELECT, INSERT, UPDATE ON SCHEMA::jmenoSchema TO jmenoRole;
 - Nejprve je nutno si vytvořit novou databázi, čistou, bez jakýchkoliv dat.    
 - Poté do této databáze nahrát soubor, který se nachází v /sql/export_script.sql, kterým nahrajete strukturu vytvořené databáze.
 - Pokud si přejete načíst do databáze testovací data, je nutno nahrát ještě soubor /sql/export_test_data.sql.
-- Pro nahrání všech triggerů, pohledů, procedur, transakcí a indexů, je zapotřebí nahrát soubor script.sql.
+- Pro nahrání všech triggerů, pohledů, procedur, transakcí a indexů, je zapotřebí nahrát soubor /sql/script.sql.
  
 ## Klientská aplikace
 - Databáze neobsahuje klientskou aplikaci.
